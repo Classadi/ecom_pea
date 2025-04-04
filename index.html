@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="wearurdare - Premium quality t-shirts">
+    <meta name="theme-color" content="#2196F3">
+    <title>wearurdare - E-Commerce PWA</title>
+
+    <!-- jQuery Mobile CSS & JS -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icon.png">
+</head>
+<body>
+    <!-- Home Page -->
+    <div data-role="page" id="home" data-title="wearurdare">
+        <header data-role="header" data-position="fixed">
+            <h1>wearurdare</h1>
+            <a href="#cart" class="ui-btn ui-btn-right ui-icon-shopping-cart ui-btn-icon-notext" aria-label="Shopping Cart"></a>
+        </header>
+
+        <main data-role="content">
+            <h2>Our Products</h2>
+            <ul data-role="listview" data-inset="true">
+                <li>
+                    <a href="#product1">
+                        <img src="images/shopping.avif" alt="T-Shirt" class="ui-li-thumb">
+                        <h3>Premium T-Shirt</h3>
+                        <p>$699</p>
+                    </a>
+                </li>
+            </ul>
+        </main>
+
+        <footer data-role="footer" data-position="fixed">
+            <h4>&copy; 2025 wearurdare. All rights reserved.</h4>
+        </footer>
+    </div>
+
+    <!-- Product Page -->
+    <div data-role="page" id="product1" data-title="Premium T-Shirt">
+        <header data-role="header" data-position="fixed">
+            <a href="#home" class="ui-btn ui-icon-back ui-btn-icon-left" aria-label="Back">Back</a>
+            <h1>Premium T-Shirt</h1>
+        </header>
+
+        <main data-role="content">
+            <img src="images/shopping.avif" alt="Premium T-Shirt" class="product-image">
+            <h3>Premium T-Shirt</h3>
+            <p class="product-description">High quality cotton t-shirt with premium finish.</p>
+            <p class="product-price">Price: $699</p>
+            <div class="product-actions">
+                <button class="add-to-cart ui-btn ui-btn-b" aria-label="Add to Cart">Add to Cart</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Shopping Cart Page -->
+    <div data-role="page" id="cart" data-title="Shopping Cart">
+        <header data-role="header" data-position="fixed">
+            <h1>Shopping Cart</h1>
+        </header>
+
+        <main data-role="content">
+            <ul id="cart-items" data-role="listview" data-inset="true"></ul>
+            <div class="cart-total">
+                <h3>Total: <span id="total-amount">$0</span></h3>
+            </div>
+            <a href="#" class="ui-btn ui-btn-b checkout-btn">Proceed to Checkout</a>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
+
